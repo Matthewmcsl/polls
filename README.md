@@ -1,3 +1,5 @@
+Drawn massive inspiration (and copied from) [Gwenf](https://github.com/gwenf/python-polls)
+
 # polls polls!
 1. Anyone can vote
 2. Anyone can add an option to the poll
