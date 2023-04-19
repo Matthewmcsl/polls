@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "python-polls"
+version = "0.1.0"
+description = ""
+authors = ["Matthew Chan <matthew@omnistream.co>"]
+readme = "README.md"
+packages = [{include = "python_polls"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.95.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
