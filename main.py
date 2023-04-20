@@ -1,55 +1,24 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+import requests
+import json
 
 app = FastAPI()
 
-"""
-username
-email
-created_at
-updated_at
-"""
+# asynchronous function
+## api.github.com
+@app.get("/github/{username}")
+async def get_github_profile(username: str):
+    response = requests.get(f"https://api.github.com/users/{username}")
+    # to check if my requests is successful
+    if response.status_code == 200:
+        user_json = response.json()
+        # user_dict = json.loads(user_json)
+        public_repo_cnt = user_json["public_repos"]
+
+        return public_repo_cnt
+    else:
+        return {"error": "User not found"}
 
 
-class User(BaseModel):
-    username: str
-    email: str
-
-
-"""
-title
-typeChoiceField (e.g, text or img)
-created_by
-create_at
-updated_at
-is_add_choices_active
-is_voting_active
-"""
-
-
-class Poll(BaseModel):
-    title: str
-    type: str
-    is_add_choices_active: bool
-    is_voting_active: bool
-
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-# setting up end points
-@app.get("/polls")
-def read_root():
-    return {"Hello": "Homies"}
-
-
-@app.get("/users")
-def read_root():
-    return {"Hello": "Users"}
-
-
-@app.post("/users/")
-async def create_user(user: User):
-    return user
+# def get_repo_count(username:str):
+#     repo_response = requests.get(f"https://api.github.com/user/{username}/")

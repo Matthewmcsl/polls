@@ -1,14 +1,12 @@
 [tool.poetry]
-name = "python-polls"
+name = "polls"
 version = "0.1.0"
-description = ""
-authors = ["Matthew Chan <matthew@omnistream.co>"]
+description = "Pull for github's user data"
+authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-packages = [{include = "python_polls"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-fastapi = "^0.95.1"
 
 
 [build-system]
